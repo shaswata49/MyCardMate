@@ -31,10 +31,9 @@ async function updateRequirement(id, quantity) {
     product.requirement -= quantity;
 
     if(product.requirement === 0){
-        await product.deleteOne()
-    }else{
-        await product.save({ validateBeforeSave: false });
+      product.isAvail = false;
     }
+    await product.save({ validateBeforeSave: false });
   }
 
 // get Single Order

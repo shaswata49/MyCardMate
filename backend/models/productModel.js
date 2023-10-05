@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     },
     description:{
         type:String,
-        required:[true,"Please Enter product Description"]
+        required:[true,"Please Enter product Address"]
     },
     price:{
         type:Number,
@@ -24,7 +24,6 @@ const productSchema = new mongoose.Schema({
         MaxLength:[4,"Stock cannot exceed 4 characters"],
         defaulst:1
     },
-
     images: [
         {
           public_id: {
@@ -37,6 +36,15 @@ const productSchema = new mongoose.Schema({
           },
         },
     ],
+
+    isAvail : {
+        type: Boolean,
+        default: true,
+    },
+
+    profit:{
+        type: Number,
+    },
     
     user: {
         type: mongoose.Schema.ObjectId,

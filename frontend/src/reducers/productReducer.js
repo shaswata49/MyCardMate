@@ -47,7 +47,7 @@ import {
           loading: false,
           products: action.payload.products,
           productsCount: action.payload.productsCount,
-          // resultPerPage: action.payload.resultPerPage,
+          resultPerPage: action.payload.resultPerPage,
           // filteredProductsCount: action.payload.filteredProductsCount,
         };
   
@@ -165,7 +165,7 @@ import {
       case PRODUCT_DETAILS_SUCCESS:
         return {
           loading: false,
-          product: action.payload,
+          product: action.payload.product,
         };
       case PRODUCT_DETAILS_FAIL:
         return {
