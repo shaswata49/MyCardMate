@@ -20,8 +20,45 @@ const orderSchema = new mongoose.Schema({
             type: Number,
             // required: true,
           },
+          price:{
+            type: Number,
+          },
+          productname:{
+            type: String,
+          },
         },
-    ],  
+    ], 
+
+    deliverDetails:{
+
+      deliveryDate:{
+        type: Date
+      },
+      pincode:{
+        type: String
+      },
+      trackingID:{
+        type: String
+      },
+      orderName:{
+        type: String
+      },
+      orderQuantity:{
+        type: Number,
+        default: 1
+      },
+      platform:{
+        type: String
+      },
+      code:{
+        type: Number
+      },
+      isApprove:{
+        type: Boolean,
+        default: false
+      },
+
+    },
 
     user: {
         type: mongoose.Schema.ObjectId,

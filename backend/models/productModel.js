@@ -22,20 +22,13 @@ const productSchema = new mongoose.Schema({
         type:Number,
         required:[true,"Please Enter product Quantity Required"],
         MaxLength:[4,"Stock cannot exceed 4 characters"],
-        defaulst:1
+        default:1
     },
-    images: [
-        {
-          public_id: {
+    images:{
             type: String,
             required: true,
-          },
-          url: {
-            type: String,
-            required: true,
-          },
+            default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiSUNfqMQvCLa4GnHS9dZs3cPRt1z3xcP7p-fHsSQ&s'
         },
-    ],
 
     isAvail : {
         type: Boolean,

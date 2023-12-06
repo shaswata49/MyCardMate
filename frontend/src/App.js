@@ -4,23 +4,33 @@ import Header from './component/layout/Header/Header';
 import { BrowserRouter as Router, Route, Routes, Switch } from "react-router-dom";
 import WebFont from "webfontloader";
 import React from 'react';
-import Footer from "./component/layout/Footer/Footer.js";
-import Home from "./component/Home/Home.js"
-import ProductDetails from "./component/Product/ProductDetails.js"
-import Products from "./component/Product/Products.js"
+import Footer from "./component/layout/Footer/Footer";
+import Home from "./component/Home/Home";
+import ProductDetails from "./component/Product/ProductDetails";
+import Products from "./component/Product/Products";
 import LoginSignUp from './component/User/LoginSignUp';
 import store from "./store"
 import { loadUser, updatePassword } from './actions/userAction';
-import UserOptions from "./component/layout/Header/UserOptions.js";
+import UserOptions from "./component/layout/Header/UserOptions";
 import { useSelector } from 'react-redux';
-import Profile from "./component/User/Profile.js";
+import Profile from "./component/User/Profile";
 import ProtectedRoute from './component/Route/ProtectedRoute';
-import UpdateProfile from './component/User/UpdateProfile.js'
-import UpdatePassword from './component/User/UpdatePassword.js'
-import ForgotPassword from './component/User/ForgotPassword.js'
-import ResetPassword from './component/User/ResetPassword.js'
-import OrderSuccess from './component/Product/OrderSuccess.js'
-import MyOrders from './component/Order/MyOrders.js';
+import UpdateProfile from './component/User/UpdateProfile';
+import UpdatePassword from './component/User/UpdatePassword';
+import ForgotPassword from './component/User/ForgotPassword';
+import ResetPassword from './component/User/ResetPassword';
+import OrderSuccess from './component/Product/OrderSuccess';
+import MyOrders from './component/Order/MyOrders';
+import OrderDetails from './component/Order/OrderDetails';
+import Dashboard from './component/Admin/Dashboard';
+import ProductList from "./component/Admin/ProductList";
+import NewProduct from "./component/Admin/NewProduct";
+import UpdateProduct from "./component/Admin/UpdateProduct"
+import OrderList from "./component/Admin/OrderList";
+import ProcessOrder from "./component/Admin/ProcessOrder";
+import UsersList from "./component/Admin/UsersList";
+import UpdateUser from "./component/Admin/UpdateUser";
+import DeliverDetail from './component/Order/deliverDetails';
 
 function App() {
 
@@ -43,9 +53,14 @@ function App() {
       <Header />
 
         {isAuthenticated && <UserOptions user={user} />}
+
+        <switch>
+
           <Route exact path="/" component={Home} />
           <Route exact path="/product/:id" component={ProductDetails} />
           <Route exact path="/products" component={Products} />
+          <ProtectedRoute exact path="/deliverDetail" component={DeliverDetail} />
+
 
           <ProtectedRoute exact path="/account" component={Profile} />
 
@@ -62,6 +77,62 @@ function App() {
           <ProtectedRoute exact path="/success" component={OrderSuccess} />
 
           <ProtectedRoute exact path="/orders" component={MyOrders} />
+
+          <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
+
+          <ProtectedRoute isAdmin={true} exact path="/admin/dashboard" component={Dashboard}/>
+
+          <ProtectedRoute
+          exact
+          path="/admin/products"
+          isAdmin={true}
+          component={ProductList}
+        />
+        
+        <ProtectedRoute
+          exact
+          path="/admin/product"
+          isAdmin={true}
+          component={NewProduct}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/product/:id"
+          isAdmin={true}
+          component={UpdateProduct}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/orders"
+          isAdmin={true}
+          component={OrderList}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/order/:id"
+          isAdmin={true}
+          component={ProcessOrder}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/users"
+          isAdmin={true}
+          component={UsersList}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/user/:id"
+          isAdmin={true}
+          component={UpdateUser}
+        />
+
+
+        </switch>
           
       <Footer />
     </Router>

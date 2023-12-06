@@ -32,8 +32,8 @@ const LoginSignUp = ({ history, location }) => {
 
   const { name, email, password } = user;
 
-  const [avatar, setAvatar] = useState();
-  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+  // const [avatar, setAvatar] = useState();
+  // const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
 
   const loginSubmit = (e) => {
     e.preventDefault();
@@ -48,25 +48,24 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("password", password);
-    myForm.set("avatar", avatar);
+    // myForm.set("avatar", avatar);
     dispatch(register(myForm));
   };
 
   const registerDataChange = (e) => {
-    if (e.target.name === "avatar") {
-      const reader = new FileReader();
+    // if (e.target.name === "avatar") {
+    //   const reader = new FileReader();
 
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setAvatarPreview(reader.result);
-          setAvatar(reader.result);
-        }
-      };
+    //   reader.onload = () => {
+    //     if (reader.readyState === 2) {
+    //       setAvatarPreview(reader.result);
+    //       setAvatar(reader.result);
+    //     }
+    //   };
 
-      reader.readAsDataURL(e.target.files[0]);
-    } else {
+    //   reader.readAsDataURL(e.target.files[0]);
+    // } else {
       setUser({ ...user, [e.target.name]: e.target.value });
-    }
   };
 
   const redirect = location.search ? location.search.split("=")[1] : "/account";
@@ -178,7 +177,7 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
 
-                <div id="registerImage">
+                {/* <div id="registerImage">
                   <img src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
@@ -186,7 +185,7 @@ const LoginSignUp = ({ history, location }) => {
                     accept="image/*"
                     onChange={registerDataChange}
                   />
-                </div>
+                </div> */}
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
             </div>

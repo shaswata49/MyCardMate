@@ -19,19 +19,15 @@ const MyOrders = () => {
   const { user } = useSelector((state) => state.user);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    // { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
 
     {
-      field: "status",
-      headerName: "Status",
-      minWidth: 150,
-      flex: 0.5,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
+      field: "productName", // Use productName instead of id
+      headerName: "Product Name",
+      minWidth: 300,
+      flex: 1,
     },
+
     {
       field: "itemsQty",
       headerName: "Items Qty",
@@ -49,6 +45,26 @@ const MyOrders = () => {
     },
 
     {
+      field: "profit", // Add a new column for Profit
+      headerName: "Profit(Each)",
+      type: "number",
+      minWidth: 150,
+      flex: 0.3,
+    },
+
+    {
+      field: "status",
+      headerName: "Status",
+      minWidth: 150,
+      flex: 0.5,
+      cellClassName: (params) => {
+        return params.getValue(params.id, "status") === "Delivered"
+          ? "greenColor"
+          : "redColor";
+      },
+    },
+
+    {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
@@ -63,16 +79,22 @@ const MyOrders = () => {
         );
       },
     },
+
+    
   ];
   const rows = [];
 
   orders &&
     orders.forEach((item, index) => {
+      // console.log(item.name);
       rows.push({
         itemsQty: item.orderItems.length,
         id: item._id,
         status: item.orderStatus,
-        amount: item.price,
+        amount: item.orderItems[0].price,
+        productName: item.orderItems[0].productname,
+        profit: item.orderItems[0].profit,
+
       });
     });
 

@@ -74,6 +74,7 @@ const ProductDetails = ({match, history}) => {
             product:product._id,
             price:product.price,
             profit:product.profit,
+            productname:product.name,
         }],
     }
 
@@ -127,8 +128,8 @@ const ProductDetails = ({match, history}) => {
 
                 <MetaData title={ `${product.name} -- Node_Project`} />
                 <div className="ProductDetails">
-                    <div>
-                        <Carousel>
+                    <div className="CarouselImage">
+                        {/* <Carousel>
                             {product.images &&
                                 product.images.map((item, i) => (
                             <img
@@ -138,7 +139,8 @@ const ProductDetails = ({match, history}) => {
                             alt={`${i} Slide`}
                             />
                         ))}
-                        </Carousel>
+                        </Carousel> */} Not working
+                        {product.images}
                     </div>
                     <div>
                         <div className="detailsBlock-1">

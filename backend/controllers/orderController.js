@@ -124,3 +124,19 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     success: true,
   });
 });
+
+// Update after delivery
+exports.deliverOrder = catchAsyncErrors(async (req, res, next) => {
+
+  const order = await Order.findById(req.params.id);
+  const deliverDetails = req.body;
+
+  order.deliverDetails = deliverDetails;
+  await Order.findByIdAndUpdate(req.params.id,order);
+
+
+  res.status(201).json({
+    success: true,
+    order,
+  });
+});
