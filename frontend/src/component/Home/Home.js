@@ -12,14 +12,14 @@ import ImageSlider from "./ImageSlider";
 const Home = () => {
   const slides = [
     {
-      url: "../../images/Slider/s1.jpg",
+      url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s1.jpg?raw=true",
       title: "beach",
     },
     {
-      url: "",
+      url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s2.jpg?raw=true",
       title: "boat",
     },
-    { url: "", 
+    { url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s3.jpg?raw=true", 
       title: "forest" },
   ];
 
