@@ -7,12 +7,33 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-
+import ImageSlider from "./ImageSlider";
 
 const Home = () => {
+  const slides = [
+    {
+      url: "../../images/Slider/s1.jpg",
+      title: "beach",
+    },
+    {
+      url: "",
+      title: "boat",
+    },
+    { url: "", 
+      title: "forest" },
+  ];
+
+  const containerStyles = {
+    width: "500px",
+    height: "280px",
+    margin: "0 auto",
+  };
+
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, products, productsCount} = useSelector((state) => state.products);
+  const { loading, error, products, productsCount } = useSelector(
+    (state) => state.products
+  );
 
   useEffect(() => {
     if (error) {
@@ -28,16 +49,18 @@ const Home = () => {
         <Loader />
       ) : (
         <Fragment>
-
           <MetaData title="Node_Project" />
 
           <div className="banner">
+            <div style={containerStyles}>
+              <ImageSlider slides={slides} />
+            </div>
             <p>Welcome to Ecommerce</p>
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
             <a href="#container">
               <button>
-                Scroll 
+                Scroll
                 <CgMouse />
               </button>
             </a>
@@ -48,10 +71,31 @@ const Home = () => {
           <div className="container" id="container">
             {products &&
               products.map((product) => (
-                <ProductCard product={product} key={product.id}/>
+                <ProductCard product={product} key={product.id} />
               ))}
-              
           </div>
+
+          <body>
+            <div class="slider">
+              <div class="slide-track">
+                <div class="slide">
+                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                </div>
+                <div class="slide">
+                  <img src="https://statusneo.com/wp-content/uploads/2023/02/MicrosoftTeams-image551ad57e01403f080a9df51975ac40b6efba82553c323a742b42b1c71c1e45f1.jpg" />
+                </div>
+                <div class="slide">
+                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                </div>
+                <div class="slide">
+                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                </div>
+                <div class="slide">
+                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                </div>
+              </div>
+            </div>
+          </body>
         </Fragment>
       )}
     </Fragment>

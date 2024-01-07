@@ -27,6 +27,7 @@ const UpdateProduct = ({ history,match }) => {
   const [description, setDescription] = useState("");
   const [productLink, setProductLink] = useState("");
   const [requirement, setRequirement] = useState(0);
+  const [instruction, setInstruction] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
@@ -87,6 +88,7 @@ const UpdateProduct = ({ history,match }) => {
     myForm.set("description", description);
     myForm.set("productLink", productLink);
     myForm.set("requirement", requirement);
+    myForm.set("instruction", instruction);
 
     // images.forEach((image) => {
     //   myForm.append("images", image);
@@ -201,6 +203,17 @@ const UpdateProduct = ({ history,match }) => {
                 required
                 onChange={(e) => setRequirement(e.target.value)}
                 value={requirement}
+              />
+            </div>
+
+            <div>
+              <SpellcheckIcon />
+              <input
+                type="text"
+                placeholder="Instruction"
+                required
+                value={instruction}
+                onChange={(e) => setInstruction(e.target.value)}
               />
             </div>
 

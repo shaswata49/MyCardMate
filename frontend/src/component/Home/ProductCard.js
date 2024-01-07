@@ -1,31 +1,31 @@
+// ProductCard.js
+
 import React from "react";
 import { Link } from "react-router-dom";
-// import { Rating } from "@material-ui/lab";
-
-// const options = {
-//   isHalf : true,
-//   color: "rgba(20,20,20,0.1)",
-//   activeColor: "tomato",
-//   size: window.innerWidth < 600 ? 20 : 25,
-//   readOnly: true,
-//   precision: 0.5,
-//   edit:false,
-//   value: product.ratings,
-// }
+import "./ProductCard.css"; // Make sure to import your CSS file
 
 const ProductCard = ({ product }) => {
   return (
-    <Link className="productCard" to={`/product/${product._id}`}>
-      <img src={product.images} alt={product.name} />
-      <p>{product.name}</p>
-      {/* <div>
-        <Rating {...options} />{" "}
-        <span className="productCardSpan">
-          {" "}
-          ({product.numOfReviews} Reviews)
-        </span>
-      </div> */}
-      <span>{`₹${product.price}`}</span>
+    <Link className="card" to={`/product/${product._id}`}>
+      <div className="imgBox">
+        <div className="imageFrame">
+          <img className="productImage" src={product.images} alt={product.name} />
+        </div>
+      </div>
+      <div className="contentBox">
+        <h3 className="productName">{product.name}</h3>
+        <span className="price">{`₹${product.price}`}</span>
+        <div className="profit">
+          <span className="profitLabel">Profit:</span>
+          <span className="profitValue">₹{product.profit}</span>
+          <span className="profitEmoji" role="img" aria-label="money-bag">
+            💰
+          </span>
+        </div>
+        <div className="descriptionUnit">
+          <p className="description">{product.description}</p>
+        </div>
+      </div>
     </Link>
   );
 };

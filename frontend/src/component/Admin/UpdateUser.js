@@ -30,6 +30,7 @@ const UpdateUser = ({ history, match }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
+  const [approve, setApprove] = useState(false);
 
   const userId = match.params.id;
 
@@ -66,6 +67,7 @@ const UpdateUser = ({ history, match }) => {
     myForm.set("name", name);
     myForm.set("email", email);
     myForm.set("role", role);
+    myForm.set("isApprove", approve);
 
     dispatch(updateUser(userId, myForm));
   };
@@ -112,6 +114,18 @@ const UpdateUser = ({ history, match }) => {
                   <option value="">Choose Role</option>
                   <option value="admin">Admin</option>
                   <option value="user">User</option>
+                </select>
+              </div>
+
+              <div>
+                <VerifiedUserIcon />
+                <select
+                  value={approve}
+                  onChange={(e) => setApprove(e.target.value)}
+                >
+                  <option value="">Approve</option>
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
                 </select>
               </div>
 

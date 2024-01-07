@@ -9,6 +9,8 @@ import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
+import DeliverDetail from "./deliverDetails";
+
 
 const OrderDetails = ({ match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
@@ -16,6 +18,19 @@ const OrderDetails = ({ match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const [status, setStatus] = useState("");
+
+  const [isOrderPopupOpen, setOrderPopupOpen] = useState(false);
+
+  const checkoutHandler = () => {
+    // // Check if the user is authenticated
+    // if (isAuthenticated) {
+    //   // User is logged in, open the order popup
+      setOrderPopupOpen(true);
+    // } else {
+    //   // User is not logged in, redirect to the login page with a redirect parameter
+    //   history.push(`/login?redirect=products`);
+    // }
+}; 
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -112,7 +127,7 @@ const OrderDetails = ({ match }) => {
                 {order.orderItems &&
                   order.orderItems.map((item) => (
                     <div key={item.product}>
-                      <img src={item.image} alt="Product" />
+                      {/* <img src={item.image} alt="Product" /> */}
                       <Link to={`/product/${item.product}`}>
                         {item.name}
                       </Link>{" "}
@@ -135,9 +150,9 @@ const OrderDetails = ({ match }) => {
                     <AccountTreeIcon />
                     <select onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Choose Category</option>
-                      {order.orderStatus === "Processing" && (
+                      {/* {order.orderStatus === "Processing" && (
                         <option value="Processing">Processing</option>
-                      )}
+                      )} */}
 
                       {order.orderStatus === "Processing" && (
                         <option value="Delivered">Delivered</option>
@@ -151,10 +166,19 @@ const OrderDetails = ({ match }) => {
                     disabled={
                       loading ? true : false || status === "" ? true : false
                     }
+                    onClick={checkoutHandler}
                   >
                     Process
                   </Button>
                 </form>
+
+
+                <DeliverDetail
+                    isOpen={isOrderPopupOpen}
+                    onClose={() => setOrderPopupOpen(false)}
+                    // onSubmit={handleOrderSubmit}
+                    // sendDataToParent={handleChildData}
+                />
         </Fragment>
       )}
     </Fragment>

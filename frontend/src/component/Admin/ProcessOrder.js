@@ -15,10 +15,11 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import "./processOrder.css";
+import axios from "axios";
 
 const ProcessOrder = ({ history, match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
-  const { error: updateError, isUpdated } = useSelector((state) => state.order);
+  const { updateError, isUpdated } = useSelector((state) => state.order);
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -52,6 +53,9 @@ const ProcessOrder = ({ history, match }) => {
     dispatch(getOrderDetails(match.params.id));
   }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
 
+  // console.log(order.user);
+  // console.log(order.orderItems[0].product.description);
+
   return (
     <Fragment>
       <MetaData title="Process Order" />
@@ -75,42 +79,84 @@ const ProcessOrder = ({ history, match }) => {
                       <p>Name:</p>
                       <span>{order.user && order.user.name}</span>
                     </div>
-                    {/* <div>
-                      <p>Phone:</p>
-                      <span>
-                        {order.shippingInfo && order.shippingInfo.phoneNo}
-                      </span>
-                    </div> */}
                     <div>
                       <p>Address:</p>
-                      <span>
-                        {order.shippingInfo &&
-                          `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
-                      </span>
+                      <span></span>
                     </div>
                   </div>
 
-                  <Typography>Payment</Typography>
+                  <Typography>Deliver Details</Typography>
                   <div className="orderDetailsContainerBox">
-                    {/* <div>
-                      <p
-                        className={
-                          order.paymentInfo &&
-                          order.paymentInfo.status === "succeeded"
-                            ? "greenColor"
-                            : "redColor"
-                        }
-                      >
-                        {order.paymentInfo &&
-                        order.paymentInfo.status === "succeeded"
-                          ? "PAID"
-                          : "NOT PAID"}
-                      </p>
-                    </div> */}
+                    <div>
+                      <p>Delivery Date:</p>
+                      <span>
+                        {order &&
+                          order.deliverDetails &&
+                          order.deliverDetails.deliveryDate}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p>Pincode:</p>
+                      <span>
+                        {order &&
+                          order.deliverDetails &&
+                          order.deliverDetails.pincode}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p>TrackingID:</p>
+                      <span>
+                        {order &&
+                          order.deliverDetails &&
+                          order.deliverDetails.trackingID}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p>Order Name:</p>
+                      <span>
+                        {order &&
+                          order.deliverDetails &&
+                          order.deliverDetails.orderName}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p>Quantity:</p>
+                      <span>
+                        {order &&
+                          order.orderItems &&
+                          order.orderItems[0] &&
+                          order.orderItems[0].quantity}
+                      </span>
+                    </div>
+
+                    <div>
+                      <p>Platform:</p>
+                      <span>
+                        {order &&
+                          order.deliverDetails &&
+                          order.deliverDetails.platform}
+                      </span>
+                    </div>
+
+
+                    <div>
+                      <p>Code:</p>
+                      <span>
+                        {order &&
+                          order.deliverDetails &&
+                          order.deliverDetails.code}
+                      </span>
+                    </div>
 
                     <div>
                       <p>Amount:</p>
-                      <span>{order.totalPrice && order.totalPrice}</span>
+                      <span>
+                        {order && order.orderItems && order.orderItems[0].price}
+                      </span>
                     </div>
                   </div>
 
@@ -130,12 +176,12 @@ const ProcessOrder = ({ history, match }) => {
                   </div>
                 </div>
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <Typography>Order Items:</Typography>
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item.product}>
-                          <img src={item.image} alt="Product" />
+                          {/* <img src={item.images} alt="Product" /> */}
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>{" "}

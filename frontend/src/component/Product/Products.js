@@ -10,16 +10,6 @@ import { useAlert } from "react-alert";
 // import Typography from "@material-ui/core/Typography";
 import MetaData from "../layout/MetaData";
 
-// const categories = [
-//   "Laptop",
-//   "Footwear",
-//   "Bottom",
-//   "Tops",
-//   "Attire",
-//   "Camera",
-//   "SmartPhones",
-// ];
-
 const Products = ({ match }) => {
   const dispatch = useDispatch();
 

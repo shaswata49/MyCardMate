@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";
 import logo from "../../../images/logo.png";
+import Navbar from "./Navbar.js"
 // import { CgProfile } from "react-icons";
 
 const options = {
@@ -40,7 +41,8 @@ const options = {
 };
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  // return <ReactNavbar {...options} />;
+  return <Navbar />;
 };
 
 export default Header;

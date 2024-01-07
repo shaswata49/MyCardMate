@@ -48,6 +48,10 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     if (!user) {
       return next(new ErrorHander("Invalid email or password", 401));
     }
+
+    if(!user.isApprove){
+      return next(new ErrorHander("User is not Approved by Admin", 401));
+    }
   
     const isPasswordMatched = await user.comparePassword(password);
   
@@ -247,6 +251,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     role: req.body.role,
+    isApprove: req.body.isApprovey,
   };
 
   await User.findByIdAndUpdate(req.params.id, newUserData, {

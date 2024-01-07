@@ -7,6 +7,7 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import FaceIcon from "@material-ui/icons/Face";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
+import Header from '../layout/Header/Header.js';
 import { useAlert } from "react-alert";
 
 const LoginSignUp = ({ history, location }) => {
@@ -65,7 +66,7 @@ const LoginSignUp = ({ history, location }) => {
 
     //   reader.readAsDataURL(e.target.files[0]);
     // } else {
-      setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const redirect = location.search ? location.search.split("=")[1] : "/account";
@@ -104,6 +105,7 @@ const LoginSignUp = ({ history, location }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Header />
           <div className="LoginSignUpContainer">
             <div className="LoginSignUpBox">
               <div>

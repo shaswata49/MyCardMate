@@ -1,0 +1,141 @@
+/* ProductCard.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Istok Web", sans-serif;
+  }
+  
+  .card {
+    position: relative;
+    width: 220px; /* Adjust the width as needed */
+    height: 340px; /* Adjust the height as needed */
+    background: #191919;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    width: 100%;
+    height: 100%;
+    background: #ffce00;
+    transform: skewY(345deg);
+    transition: 0.5s;
+  }
+  
+  .card:hover::before {
+    top: -70%;
+    transform: skewY(390deg);
+  }
+  
+  .card .imgBox {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1;
+  }
+  
+  .card .imageFrame {
+    width: 80%;
+    padding: 10px;
+    background: #ffce00;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .card .imgBox img {
+    max-width: 100%;
+    transition: 0.5s;
+  }
+  
+  .card:hover .imgBox img {
+    max-width: 50%;
+  }
+  
+  .card .contentBox {
+    position: relative;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+  }
+  
+  .card .contentBox h3 {
+    font-size: 18px;
+    font-weight: bold; /* Added bold style */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: white; /* Changed the color to white */
+    text-shadow: 2px 2px #ffce00; /* Added yellow shadow */
+  }
+  
+  .card .contentBox .price {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    color: #ffce00; /* Retained the yellow color for the price */
+  }
+  
+  .card .contentBox .profit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .card .contentBox .profitLabel {
+    font-size: 14px;
+    color: #ffce00;
+    letter-spacing: 1px;
+  }
+  
+  .card .contentBox .profitValue {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffce00;
+    letter-spacing: 1px;
+    margin-top: 5px;
+  }
+  
+  .card .contentBox .profitEmoji {
+    font-size: 24px;
+    margin-top: 5px;
+  }
+  
+  .card .contentBox .descriptionUnit {
+    position: relative;
+    top: 50px;
+    opacity: 0;
+    padding: 10px;
+    background: #ffce00;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.5s;
+  }
+  
+  .card:hover .contentBox .descriptionUnit {
+    top: 0;
+    opacity: 1;
+  }
+  
+  .card .contentBox .description {
+    font-size: 14px;
+    color: #191919;
+  }
+  
