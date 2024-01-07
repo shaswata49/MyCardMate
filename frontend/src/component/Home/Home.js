@@ -13,7 +13,7 @@ const Home = () => {
   const slides = [
     {
       url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s1.jpg?raw=true",
-      title: "beach",
+      title: "Pictur1",
     },
     {
       url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s2.jpg?raw=true",
