@@ -35,9 +35,13 @@ a {
   justify-content: space-around;
   gap: 3rem;
 }
+.nav_link:hover {
+  font-size: 2rem;
+}
 .nav__toggler {
   display: none;
 }
+
 .nav__toggler div {
   width: 2.5rem;
   height: 0.2rem;

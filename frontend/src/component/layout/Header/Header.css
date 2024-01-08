@@ -9,3 +9,11 @@
     height: 56px;
     border-radius: 100%;
   }
+
+  /* @media screen and (max-width: 600px) {
+    .speedDial{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  } */

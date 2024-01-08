@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const slideStyles = {
-  width: "100%",
+  width: "80%",
   height: "100%",
   borderRadius: "10px",
   backgroundSize: "cover",
@@ -72,7 +72,7 @@ const ImageSlider = ({ slides }) => {
   
     // Auto-slide logic
     useEffect(() => {
-      const intervalId = setInterval(goToNext, 1000); // Change 10000 to the desired interval in milliseconds
+      const intervalId = setInterval(goToNext, 5000); // Change 10000 to the desired interval in milliseconds
   
       // Clear the interval when the component unmounts
       return () => clearInterval(intervalId);

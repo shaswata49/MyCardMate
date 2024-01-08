@@ -19,8 +19,10 @@ const Home = () => {
       url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s2.jpg?raw=true",
       title: "boat",
     },
-    { url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s3.jpg?raw=true", 
-      title: "forest" },
+    {
+      url: "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Slider/s3.jpg?raw=true",
+      title: "forest",
+    },
   ];
 
   const containerStyles = {
@@ -51,19 +53,19 @@ const Home = () => {
         <Fragment>
           <MetaData title="Node_Project" />
 
+          <p className="welcome">Welcome to MyCardMate</p>
+
           <div className="banner">
             <div style={containerStyles}>
               <ImageSlider slides={slides} />
             </div>
-            <p>Welcome to Ecommerce</p>
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
-            <a href="#container">
+            {/* <a href="#container">
               <button>
                 Scroll
                 <CgMouse />
               </button>
-            </a>
+            </a> */}
           </div>
 
           <h2 className="homeHeading">Featured Products</h2>
