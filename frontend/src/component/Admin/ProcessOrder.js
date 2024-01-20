@@ -81,7 +81,7 @@ const ProcessOrder = ({ history, match }) => {
                     </div>
                     <div>
                       <p>Address:</p>
-                      <span></span>
+                      <span>{order.orderItems && order.orderItems[0].address}</span>
                     </div>
                   </div>
 
@@ -92,7 +92,7 @@ const ProcessOrder = ({ history, match }) => {
                       <span>
                         {order &&
                           order.deliverDetails &&
-                          order.deliverDetails.deliveryDate}
+                          order.deliverDetails.deliveryDate && new Date(order.deliverDetails.deliveryDate).toLocaleDateString()}
                       </span>
                     </div>
 

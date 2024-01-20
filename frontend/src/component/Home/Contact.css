@@ -1,0 +1,109 @@
+/* Contact.css */
+
+.contact-us-container {
+  margin: 50px auto;
+}
+
+.display-4 {
+  color: #333;
+}
+
+.t_border {
+  border-top: 2px solid #333;
+  width: 50px;
+}
+
+/* Add this style to create a gap between "Get in touch" and the email */
+.color_sec {
+  margin-bottom: 15px;
+}
+
+/* Additional styling for the email link */
+.color_sec a {
+  color: #333; /* You can change the color to your preference */
+  text-decoration: none;
+}
+
+.color_sec a:hover {
+  text-decoration: underline;
+}
+
+.sec_sp {
+  margin-top: 20px;
+}
+
+.contact__form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.address-text {
+  margin-top: 15px;
+}
+
+.email {
+  color: #333; /* Change to the desired color */
+  text-decoration: none;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.ac_btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ac_btn:hover {
+  background-color: #0056b3;
+}
+
+/* Loader.css (assuming it's in the same directory) */
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

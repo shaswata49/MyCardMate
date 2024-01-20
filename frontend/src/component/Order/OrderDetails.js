@@ -77,7 +77,7 @@ const OrderDetails = ({ match }) => {
                 <div>
                   <p>Address:</p>
                   <span>
-                    {order.shippingInfo}
+                    {order.orderItems && order.orderItems[0].address}
                   </span>
                 </div>
               </div>

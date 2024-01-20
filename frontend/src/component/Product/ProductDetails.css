@@ -43,6 +43,10 @@
 .detailsBlock-3 {
   width: 100%;
   margin-top: 2vmax;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .detailsBlock-3 > h1 {
@@ -145,13 +149,57 @@
   }
 
   .detailsBlock-1 > h2 {
-    font-size: 2.5vmax;
+    font-size: 4vmax;
     text-align: center;
   }
 
   .detailsBlock-1 > p {
     text-align: center;
     font-size: 1vmax;
+  }
+
+  .detailsBlock-3 {
+    width: 100%;
+    margin-top: 2vmax;
+    text-align: center; /* Center the text */
+  }
+
+  .detailsBlock-3 > h1 {
+    font-size: 3vmax;
+    margin: 1vmax 0;
+  }
+
+  .detailsBlock-3-1 {
+    flex-direction: column; /* Stack buttons and input vertically */
+    margin-top: 1vmax;
+  }
+
+  .detailsBlock-3-1-1 > button {
+    margin-bottom: 1vmax;
+  }
+
+  .detailsBlock-3-1 > button:last-child {
+    margin: 1vmax 0;
+  }
+
+  .detailsBlock-4-1 {
+    font-size: 3vmax; /* Adjust font size */
+    margin-top: 2vmax;
+    justify-content: center; /* Center the content */
+  }
+
+  .detailsBlock-4-1::before {
+    margin-right: 0.5vmax;
+  }
+
+  .detailsBlock-4 {
+    font-size: 2vmax; /* Adjust font size */
+    margin-top: 2vmax;
+  }
+
+  .detailsBlock-4 > p {
+    font-size: 0.7vmax; /* Adjust font size */
+    margin: 1vmax 0;
   }
 
   /* Add additional responsive styles */

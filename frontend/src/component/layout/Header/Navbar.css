@@ -65,11 +65,13 @@ a {
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.5s ease-in;
+    z-index: 10;
   }
 }
 /* Active Class */
 .nav__active {
   transform: translateX(0%);
+  z-index: 10;
 }
 
 /* Toggle Icon Animation */

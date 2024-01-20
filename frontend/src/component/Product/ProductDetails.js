@@ -1,4 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -70,6 +72,7 @@ const ProductDetails = ({ match, history }) => {
         price: product.price,
         profit: product.profit,
         productname: product.name,
+        address: product.description,
       },
     ],
   };
@@ -105,13 +108,18 @@ const ProductDetails = ({ match, history }) => {
         <Fragment>
           <MetaData title={`${product.name} -- Node_Project`} />
           <div className="ProductDetails">
-            {product.images && product.images.length > 0 && (
-              <img
-                className="CarouselImage"
-                src={product.images} // Assuming you want to use the first image in the array
-                alt="Product Slide"
-              />
-            )}
+            <Carousel>
+              {product.images &&
+                product.images.map((item, i) => (
+                  <img
+                    className="CarouselImage"
+                    key={i}
+                    src={item}
+                    alt={`${i} Slide`}
+                  />
+                ))}
+            </Carousel>
+
             <div>
               <div className="detailsBlock-1">
                 <h2>{product.name}</h2>
@@ -144,14 +152,13 @@ const ProductDetails = ({ match, history }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {product.productLink}
+                  Link
                 </a>
               </div>
 
               <div className="detailsBlock-4">
                 Instruction : {product.instruction}
               </div>
-
             </div>
           </div>
 

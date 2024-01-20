@@ -25,11 +25,11 @@ const Home = () => {
     },
   ];
 
-  const containerStyles = {
-    width: "500px",
-    height: "280px",
-    margin: "0 auto",
-  };
+  // const containerStyles = {
+  //   width: "500px",
+  //   height: "280px",
+  //   margin: "0 auto",
+  // };
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -51,12 +51,12 @@ const Home = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="Node_Project" />
+          <MetaData title="MyCardMate" />
 
           <p className="welcome">Welcome to MyCardMate</p>
 
           <div className="banner">
-            <div style={containerStyles}>
+            <div className="containerStyles">
               <ImageSlider slides={slides} />
             </div>
 
@@ -77,23 +77,24 @@ const Home = () => {
               ))}
           </div>
 
+          <h2 className="homeHeading">Featured Stock</h2>
           <body>
             <div class="slider">
               <div class="slide-track">
-                <div class="slide">
-                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                <div class="slides">
+                  <img src="https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Stock/stock1.jpg?raw=true" />
                 </div>
-                <div class="slide">
-                  <img src="https://statusneo.com/wp-content/uploads/2023/02/MicrosoftTeams-image551ad57e01403f080a9df51975ac40b6efba82553c323a742b42b1c71c1e45f1.jpg" />
+                <div class="slides">
+                  <img src="https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Stock/stock2.jpg?raw=true" />
                 </div>
-                <div class="slide">
-                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                <div class="slides">
+                  <img src="https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Stock/stock3.jpg?raw=true" />
                 </div>
-                <div class="slide">
-                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                <div class="slides">
+                  <img src="https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Stock/stock4.jpg?raw=true" />
                 </div>
-                <div class="slide">
-                  <img src="https://p.potaufeu.asahi.com/1831-p/picture/27695628/89644a996fdd0cfc9e06398c64320fbe.jpg" />
+                <div class="slides">
+                  <img src="https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Stock/stock5.jpg?raw=true" />
                 </div>
               </div>
             </div>

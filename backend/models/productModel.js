@@ -25,10 +25,13 @@ const productSchema = new mongoose.Schema({
     default: 1,
   },
   images: {
-    type: String,
+    type: Array,
     required: true,
-    default:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiSUNfqMQvCLa4GnHS9dZs3cPRt1z3xcP7p-fHsSQ&s",
+    default:[
+      "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Product/IMG-20230926-WA0000.jpg?raw=true",
+      "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Product/IMG-20230926-WA0001.jpg?raw=true",
+      "https://github.com/shaswata49/Node_Project/blob/main/frontend/src/images/Product/IMG-20230926-WA0002.jpg?raw=true"
+    ]
   },
   instruction:{
     type: String,

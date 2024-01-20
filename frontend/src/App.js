@@ -30,7 +30,8 @@ import OrderList from "./component/Admin/OrderList";
 import ProcessOrder from "./component/Admin/ProcessOrder";
 import UsersList from "./component/Admin/UsersList";
 import UpdateUser from "./component/Admin/UpdateUser";
-import DeliverDetail from './component/Order/deliverDetails';
+import AboutUs from "./component/Home/AboutUs";
+import Contact from "./component/Home/Contact";
 
 function App() {
 
@@ -61,6 +62,8 @@ function App() {
           <Route exact path="/products" component={Products} />
           {/* <ProtectedRoute exact path="/deliverDetail" component={DeliverDetail} /> */}
 
+          <Route exact path="/about" component={AboutUs} />
+          <Route exact path="/contact" component={Contact} />
 
           <ProtectedRoute exact path="/account" component={Profile} />
 

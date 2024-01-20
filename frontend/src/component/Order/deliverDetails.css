@@ -21,27 +21,20 @@
   pointer-events: auto; /* Allow clicks when open */
 }
 
-.popup-content {
-  background-color: #f9f9f9; /* Light gray background */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  text-align: center;
-}
 
-.popup-content h2 {
+.deliverDetails h2 {
   margin-top: 0;
   color: #333; /* Dark text color */
 }
 
-.popup-content form {
+.deliverDetails form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px; /* Add margin for separation from the heading */
 }
 
-.popup-content input {
+.deliverDetails input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -52,11 +45,11 @@
   transition: border-color 0.3s ease-in-out;
 }
 
-.popup-content input:focus {
+.deliverDetails input:focus {
   border-color: #0056b3; /* Darker blue border on focus */
 }
 
-.popup-content button {
+.deliverDetails button {
   width: 100%; /* Make the button as wide as the input field */
   padding: 8px 30px; /* Adjust padding to make the buttons smaller */
   background-color: tomato; /* Tomato color */
@@ -68,16 +61,16 @@
   margin-top: 10px; /* Add margin to separate from the input field */
 }
 
-.popup-content button[type="submit"] {
+.deliverDetails button[type="submit"] {
   background-color: tomato; /* Tomato color */
 }
 
-.popup-content button[type="submit"]:hover {
+.deliverDetails button[type="submit"]:hover {
   background-color: #ff6347; /* Slightly darker tomato on hover */
 }
 
 /* Close button */
-.popup-content button:last-child {
+.deliverDetails button:last-child {
   background-color: tomato; /* Tomato color */
   margin-top: 10px;
   color: white;
@@ -86,6 +79,57 @@
   font-size: 14px; /* Decrease font size for smaller buttons */
 }
 
-.popup-content button:last-child:hover {
+.deliverDetails button:last-child:hover {
   background-color: #ff6347; /* Slightly darker tomato on hover */
+}
+
+
+.createProductForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 3vmax;
+  justify-content: space-evenly;
+  height: 80%;
+  width: 60vh;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
+}
+
+.createProductForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10;
+}
+.createProductForm > div > input,
+.createProductForm > div > select,
+.createProductForm > div > textarea {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
+  margin: 2px;
+}
+
+.createProductForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+@media screen and (max-width: 600px) {
+  .deliverDetails{
+    width: 95%;
+    /* background-color: aliceblue; */
+  }
+  .deliverDetails form{
+    width: inherit;
+  }
 }

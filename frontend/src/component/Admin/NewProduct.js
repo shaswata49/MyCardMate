@@ -138,7 +138,7 @@ const NewProduct = ({ history }) => {
               <DescriptionIcon />
 
               <textarea
-                placeholder="Description"
+                placeholder="Address"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 cols="30"
