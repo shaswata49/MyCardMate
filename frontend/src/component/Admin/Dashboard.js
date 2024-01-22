@@ -19,6 +19,12 @@ const Dashboard = () => {
 
   const { users } = useSelector((state) => state.allUsers);
 
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.orderItems[0].price;
+    });
+
   const lineState = {
     labels: ["Initial Amount", "Amount Earned"],
     datasets: [
@@ -42,7 +48,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹2000
+              Total Amount <br /> ₹{totalAmount}
             </p>
           </div>
           <div className="dashboardSummaryBox2">
