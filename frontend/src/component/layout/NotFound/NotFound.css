@@ -1,0 +1,34 @@
+.PagellotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .ErrorIcon {
+    color: red; /* Change the color of the error icon as needed */
+  }
+  
+  .TypographyNotFound {
+    font-weight: bold;
+  }
+  
+  .LinkHome {
+    margin-top: 10px; /* Add margin to separate the link from the text */
+  }
+  
+  .LinkHome button {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .LinkHome button:hover {
+    background-color: darkorange; /* Change the color when hovering if desired */
+  }
+  

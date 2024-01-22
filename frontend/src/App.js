@@ -36,6 +36,7 @@ import UsersList from "./component/Admin/UsersList";
 import UpdateUser from "./component/Admin/UpdateUser";
 import AboutUs from "./component/Home/AboutUs";
 import Contact from "./component/Home/Contact";
+import NotFound from "./component/layout/NotFound/NotFound";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -57,7 +58,7 @@ function App() {
 
       {isAuthenticated && <UserOptions user={user} />}
 
-      <switch>
+      <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
@@ -144,7 +145,10 @@ function App() {
           component={UpdateUser}
         />
 
-      </switch>
+        <Route 
+        component = {NotFound}/>
+
+      </Switch>
 
       <Footer />
     </Router>
