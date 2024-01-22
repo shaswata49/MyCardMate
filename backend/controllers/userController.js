@@ -9,11 +9,7 @@ const sendEmail = require("../utils/sendEmail");
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
-  // const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-  //   folder: "avatars",
-  //   width: 150,
-  //   crop: "scale",
-  // });
+
 
     const { name, email, password } = req.body;
 
@@ -21,10 +17,6 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       name,
       email,
       password,
-      // avatar: {
-      //   public_id: myCloud.public_id,
-      //   url: myCloud.secure_url,
-      // },
     });
 
     const token = user.getJWTToken();
@@ -251,7 +243,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     role: req.body.role,
-    isApprove: req.body.isApprovey,
+    isApprove: req.body.isApprove,
   };
 
   await User.findByIdAndUpdate(req.params.id, newUserData, {
@@ -274,10 +266,6 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
       new ErrorHander(`User does not exist with Id: ${req.params.id}`, 400)
     );
   }
-
-  // const imageId = user.avatar.public_id;
-
-  // await cloudinary.v2.uploader.destroy(imageId);
 
   await user.deleteOne();
 

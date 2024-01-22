@@ -56,7 +56,7 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title="PRODUCTS -- Node_Project" />
+          <MetaData title="PRODUCTS -- MyCardMate" />
           <h2 className="productsHeading">Products</h2>
 
           <div className="products">

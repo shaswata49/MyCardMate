@@ -15,7 +15,6 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 import "./processOrder.css";
-import axios from "axios";
 
 const ProcessOrder = ({ history, match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
@@ -53,8 +52,6 @@ const ProcessOrder = ({ history, match }) => {
     dispatch(getOrderDetails(match.params.id));
   }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
 
-  // console.log(order.user);
-  // console.log(order.orderItems[0].product.description);
 
   return (
     <Fragment>
@@ -82,6 +79,10 @@ const ProcessOrder = ({ history, match }) => {
                     <div>
                       <p>Address:</p>
                       <span>{order.orderItems && order.orderItems[0].address}</span>
+                    </div>
+                    <div>
+                      <p>Product Name:</p>
+                      <span>{order.orderItems && order.orderItems[0].productname}</span>
                     </div>
                   </div>
 
@@ -181,13 +182,12 @@ const ProcessOrder = ({ history, match }) => {
                     {order.orderItems &&
                       order.orderItems.map((item) => (
                         <div key={item.product}>
-                          {/* <img src={item.images} alt="Product" /> */}
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>{" "}
                           <span>
-                            {item.quantity} X ₹{item.price} ={" "}
-                            <b>₹{item.price * item.quantity}</b>
+                          {item.quantity} X ₹({item.price}+{item.profit}) ={" "}
+                          <b>₹{(item.price+item.profit) * item.quantity}</b>
                           </span>
                         </div>
                       ))}

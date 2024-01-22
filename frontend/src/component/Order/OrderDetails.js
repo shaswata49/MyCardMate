@@ -11,7 +11,6 @@ import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
 import DeliverDetail from "./deliverDetails";
 
-
 const OrderDetails = ({ match }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
 
@@ -25,12 +24,12 @@ const OrderDetails = ({ match }) => {
     // // Check if the user is authenticated
     // if (isAuthenticated) {
     //   // User is logged in, open the order popup
-      setOrderPopupOpen(true);
+    setOrderPopupOpen(true);
     // } else {
     //   // User is not logged in, redirect to the login page with a redirect parameter
     //   history.push(`/login?redirect=products`);
     // }
-}; 
+  };
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -55,7 +54,7 @@ const OrderDetails = ({ match }) => {
       {loading ? (
         <Loader />
       ) : (
-          <Fragment>
+        <Fragment>
           <MetaData title="Order Details" />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
@@ -76,8 +75,12 @@ const OrderDetails = ({ match }) => {
                 </div> */}
                 <div>
                   <p>Address:</p>
+                  <span>{order.orderItems && order.orderItems[0].address}</span>
+                </div>
+                <div>
+                  <p>Product Name:</p>
                   <span>
-                    {order.orderItems && order.orderItems[0].address}
+                    {order.orderItems && order.orderItems[0].productname}
                   </span>
                 </div>
               </div>
@@ -133,52 +136,46 @@ const OrderDetails = ({ match }) => {
                       </Link>{" "}
                       <span>
                         {item.quantity} X ₹({item.price}+{item.profit}) ={" "}
-                        <b>₹{(item.price+item.profit) * item.quantity}</b>
+                        <b>₹{(item.price + item.profit) * item.quantity}</b>
                       </span>
                     </div>
                   ))}
               </div>
             </div>
           </div>
-          <form
-                  className="updateOrderForm"
-                  onSubmit={updateOrderSubmitHandler}
-                >
-                  <h1>Process Order</h1>
+          <form className="updateOrderForm" onSubmit={updateOrderSubmitHandler}>
+            <h1>Process Order</h1>
 
-                  <div>
-                    <AccountTreeIcon />
-                    <select onChange={(e) => setStatus(e.target.value)}>
-                      <option value="">Choose Category</option>
-                      {/* {order.orderStatus === "Processing" && (
+            <div>
+              <AccountTreeIcon />
+              <select onChange={(e) => setStatus(e.target.value)}>
+                <option value="">Choose Category</option>
+                {/* {order.orderStatus === "Processing" && (
                         <option value="Processing">Processing</option>
                       )} */}
 
-                      {order.orderStatus === "Processing" && (
-                        <option value="Delivered">Delivered</option>
-                      )}
-                    </select>
-                  </div>
+                {order.orderStatus === "Processing" && (
+                  <option value="Delivered">Delivered</option>
+                )}
+              </select>
+            </div>
 
-                  <Button
-                    id="createProductBtn"
-                    type="submit"
-                    disabled={
-                      loading ? true : false || status === "" ? true : false
-                    }
-                    onClick={checkoutHandler}
-                  >
-                    Process
-                  </Button>
-                </form>
+            <Button
+              id="createProductBtn"
+              type="submit"
+              disabled={loading ? true : false || status === "" ? true : false}
+              onClick={checkoutHandler}
+            >
+              Process
+            </Button>
+          </form>
 
-
-                <DeliverDetail
-                    isOpen={isOrderPopupOpen}
-                    onClose={() => setOrderPopupOpen(false)}
-                    // onSubmit={handleOrderSubmit}
-                    // sendDataToParent={handleChildData}
-                />
+          <DeliverDetail
+            isOpen={isOrderPopupOpen}
+            onClose={() => setOrderPopupOpen(false)}
+            // onSubmit={handleOrderSubmit}
+            // sendDataToParent={handleChildData}
+          />
         </Fragment>
       )}
     </Fragment>

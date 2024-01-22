@@ -88,7 +88,7 @@ const MyOrders = () => {
     orders.forEach((item, index) => {
       // console.log(item.name);
       rows.push({
-        itemsQty: item.orderItems.length,
+        itemsQty: item.orderItems[0].quantity,
         id: item._id,
         status: item.orderStatus,
         amount: item.orderItems[0].price,

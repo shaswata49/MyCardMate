@@ -25,12 +25,6 @@ const Home = () => {
     },
   ];
 
-  // const containerStyles = {
-  //   width: "500px",
-  //   height: "280px",
-  //   margin: "0 auto",
-  // };
-
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products, productsCount } = useSelector(
@@ -52,20 +46,12 @@ const Home = () => {
       ) : (
         <Fragment>
           <MetaData title="MyCardMate" />
-
           <p className="welcome">Welcome to MyCardMate</p>
 
           <div className="banner">
             <div className="containerStyles">
               <ImageSlider slides={slides} />
             </div>
-
-            {/* <a href="#container">
-              <button>
-                Scroll
-                <CgMouse />
-              </button>
-            </a> */}
           </div>
 
           <h2 className="homeHeading">Featured Products</h2>

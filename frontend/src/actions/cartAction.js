@@ -8,8 +8,6 @@ import {
     // localStorage.clear();
     const { data } = await axios.get(`/api/v1/product/${id}`);
   
-
-    // localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
   
     dispatch({
       type: ADD_TO_CART,
@@ -17,7 +15,6 @@ import {
         product: data.product._id,
         name: orderName,
         price: data.product.price,
-        // profit:data.product.profit,
         quantity,
       },
     });

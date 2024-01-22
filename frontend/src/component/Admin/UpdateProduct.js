@@ -1,11 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import "./newProduct.css";
 import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, updateProduct, getProductDetails } from "../../actions/productAction";
+import {
+  clearErrors,
+  updateProduct,
+  getProductDetails,
+} from "../../actions/productAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import DescriptionIcon from "@material-ui/icons/Description";
 import StorageIcon from "@material-ui/icons/Storage";
 import SpellcheckIcon from "@material-ui/icons/Spellcheck";
@@ -13,13 +16,17 @@ import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import SideBar from "./Sidebar";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const UpdateProduct = ({ history,match }) => {
+const UpdateProduct = ({ history, match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const { error, product } = useSelector((state) => state.productDetails);
 
-  const { loading, error:updateError, isUpdated } = useSelector((state) => state.product);
+  const {
+    loading,
+    error: updateError,
+    isUpdated,
+  } = useSelector((state) => state.product);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -28,37 +35,20 @@ const UpdateProduct = ({ history,match }) => {
   const [productLink, setProductLink] = useState("");
   const [requirement, setRequirement] = useState(0);
   const [instruction, setInstruction] = useState("");
-  const [images, setImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
 
-//   const categories = [
-//     "Laptop",
-//     "Footwear",
-//     "Bottom",
-//     "Tops",
-//     "Attire",
-//     "Camera",
-//     "SmartPhones",
-//   ];
-
-    const productId = match.params.id;
+  const productId = match.params.id;
 
   useEffect(() => {
-
     if (product && product._id !== productId) {
-        dispatch(getProductDetails(productId));
-      } else {
-        setName(product.name);
-        setDescription(product.description);
-        setPrice(product.price);
-        // setCategory(product.category);
-        setRequirement(product.requirement);
-        // setOldImages(product.images);
-        setProfit(product.profit);
-        setProductLink(product.productLink);
-    
-      }
-
+      dispatch(getProductDetails(productId));
+    } else {
+      setName(product.name);
+      setDescription(product.description);
+      setPrice(product.price);
+      setRequirement(product.requirement);
+      setProfit(product.profit);
+      setProductLink(product.productLink);
+    }
 
     if (error) {
       alert.error(error);
@@ -66,16 +56,25 @@ const UpdateProduct = ({ history,match }) => {
     }
 
     if (updateError) {
-        alert.error(updateError);
-        dispatch(clearErrors());
-      }
+      alert.error(updateError);
+      dispatch(clearErrors());
+    }
 
     if (isUpdated) {
       alert.success("Product Updated Successfully");
       history.push("/admin/products");
-      dispatch({ type:  UPDATE_PRODUCT_RESET });
+      dispatch({ type: UPDATE_PRODUCT_RESET });
     }
-  }, [dispatch, alert, error, history, isUpdated, productId, product, updateError]);
+  }, [
+    dispatch,
+    alert,
+    error,
+    history,
+    isUpdated,
+    productId,
+    product,
+    updateError,
+  ]);
 
   const updateProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -90,31 +89,8 @@ const UpdateProduct = ({ history,match }) => {
     myForm.set("requirement", requirement);
     myForm.set("instruction", instruction);
 
-    // images.forEach((image) => {
-    //   myForm.append("images", image);
-    // });
-    dispatch(updateProduct(productId,myForm));
+    dispatch(updateProduct(productId, myForm));
   };
-
-  // const createProductImagesChange = (e) => {
-  //   const files = Array.from(e.target.files);
-
-  //   setImages([]);
-  //   setImagesPreview([]);
-
-  //   files.forEach((file) => {
-  //     const reader = new FileReader();
-
-  //     reader.onload = () => {
-  //       if (reader.readyState === 2) {
-  //         setImagesPreview((old) => [...old, reader.result]);
-  //         setImages((old) => [...old, reader.result]);
-  //       }
-  //     };
-
-  //     reader.readAsDataURL(file);
-  //   });
-  // };
 
   return (
     <Fragment>
@@ -183,18 +159,6 @@ const UpdateProduct = ({ history,match }) => {
               ></textarea>
             </div>
 
-            {/* <div>
-              <AccountTreeIcon />
-              <select onChange={(e) => setProductLink(e.target.value)}>
-                <option value="">Product Link</option>
-                {categories.map((cate) => (
-                  <option key={cate} value={cate}>
-                    {cate}
-                  </option>
-                ))}
-              </select>
-            </div> */}
-
             <div>
               <StorageIcon />
               <input
@@ -216,24 +180,6 @@ const UpdateProduct = ({ history,match }) => {
                 onChange={(e) => setInstruction(e.target.value)}
               />
             </div>
-
-            
-
-            {/* <div id="createProductFormFile">
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={createProductImagesChange}
-                multiple
-              />
-            </div> */}
-
-            {/* <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
-            </div> */}
 
             <Button
               id="createProductBtn"

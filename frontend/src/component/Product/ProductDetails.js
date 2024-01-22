@@ -56,7 +56,13 @@ const ProductDetails = ({ match, history }) => {
     // Check if the user is authenticated
     if (isAuthenticated) {
       // User is logged in, open the order popup
-      setOrderPopupOpen(true);
+      if (user && user.isApprove) {
+        // User is logged in and approved, open the order popup
+        setOrderPopupOpen(true);
+      } else {
+        // User is not approved, show a message
+        alert.error("User is not Approved by Admin");
+      }
     } else {
       // User is not logged in, redirect to the login page with a redirect parameter
       history.push(`/login?redirect=products`);

@@ -30,7 +30,7 @@ const UpdateUser = ({ history, match }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [approve, setApprove] = useState(false);
+  const [approve, setApprove] = useState("");
 
   const userId = match.params.id;
 
@@ -41,6 +41,7 @@ const UpdateUser = ({ history, match }) => {
       setName(user.name);
       setEmail(user.email);
       setRole(user.role);
+      setApprove(user.isApprove);
     }
     if (error) {
       alert.error(error);
@@ -121,11 +122,11 @@ const UpdateUser = ({ history, match }) => {
                 <VerifiedUserIcon />
                 <select
                   value={approve}
-                  onChange={(e) => setApprove(e.target.value)}
+                  onChange={(e) => setApprove(e.target.value === 'true')}
                 >
                   <option value="">Approve</option>
-                  <option value="true">Yes</option>
-                  <option value="false">No</option>
+                  <option value={true}>Yes</option>
+                  <option value={false}>No</option>
                 </select>
               </div>
 

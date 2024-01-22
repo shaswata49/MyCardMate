@@ -18,7 +18,6 @@ const orderSchema = new mongoose.Schema({
           },
           profit: {
             type: Number,
-            // required: true,
           },
           price:{
             type: Number,

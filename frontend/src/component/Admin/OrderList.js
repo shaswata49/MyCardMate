@@ -53,7 +53,7 @@ const OrderList = ({ history }) => {
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
 
     {
-        field: "productName", // Use productName instead of id
+        field: "productName",
         headerName: "Product Name",
         minWidth: 300,
         flex: 1,
@@ -76,9 +76,8 @@ const OrderList = ({ history }) => {
       },
   
       {
-        field: "profit", // Add a new column for Profit
-        headerName: "Profit(Each)",
-        type: "number",
+        field: "user",
+        headerName: "User",
         minWidth: 150,
         flex: 0.3,
       },
@@ -127,12 +126,12 @@ const OrderList = ({ history }) => {
   orders &&
     orders.forEach((item) => {
       rows.push({
-        itemsQty: item.orderItems.length,
+        itemsQty: item.orderItems[0].quantity,
         id: item._id,
         status: item.orderStatus,
         amount: item.orderItems[0].price,
         productName: item.orderItems[0].productname,
-        profit: item.orderItems[0].profit,
+        user: item.user,
       });
     });
 

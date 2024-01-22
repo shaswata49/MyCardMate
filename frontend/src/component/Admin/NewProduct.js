@@ -5,7 +5,6 @@ import { clearErrors, createProduct } from "../../actions/productAction";
 import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
 import MetaData from "../layout/MetaData";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import DescriptionIcon from "@material-ui/icons/Description";
 import StorageIcon from "@material-ui/icons/Storage";
 import SpellcheckIcon from "@material-ui/icons/Spellcheck";
@@ -26,18 +25,6 @@ const NewProduct = ({ history }) => {
   const [productLink, setProductLink] = useState("");
   const [requirement, setRequirement] = useState(0);
   const [instruction, setInstruction] = useState("");
-  // const [images, setImages] = useState([]);
-  // const [imagesPreview, setImagesPreview] = useState([]);
-
-//   const categories = [
-//     "Laptop",
-//     "Footwear",
-//     "Bottom",
-//     "Tops",
-//     "Attire",
-//     "Camera",
-//     "SmartPhones",
-//   ];
 
   useEffect(() => {
     if (error) {
@@ -65,31 +52,8 @@ const NewProduct = ({ history }) => {
     myForm.set("requirement", requirement);
     myForm.set("instruction", instruction);
 
-    // images.forEach((image) => {
-    //   myForm.append("images", image);
-    // });
     dispatch(createProduct(myForm));
   };
-
-  // const createProductImagesChange = (e) => {
-  //   const files = Array.from(e.target.files);
-
-  //   setImages([]);
-  //   setImagesPreview([]);
-
-  //   files.forEach((file) => {
-  //     const reader = new FileReader();
-
-  //     reader.onload = () => {
-  //       if (reader.readyState === 2) {
-  //         setImagesPreview((old) => [...old, reader.result]);
-  //         setImages((old) => [...old, reader.result]);
-  //       }
-  //     };
-
-  //     reader.readAsDataURL(file);
-  //   });
-  // };
 
   return (
     <Fragment>
@@ -176,12 +140,6 @@ const NewProduct = ({ history }) => {
                 onChange={(e) => setInstruction(e.target.value)}
               />
             </div>
-
-            {/* <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
-            </div> */}
 
             <Button
               id="createProductBtn"
