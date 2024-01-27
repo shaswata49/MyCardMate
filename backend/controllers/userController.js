@@ -5,66 +5,61 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 // const cloudinary = require("cloudinary");
 
-
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+  const { name, email, password } = req.body;
 
+  const user = await User.create({
+    name,
+    email,
+    password,
+  });
 
+  const token = user.getJWTToken();
 
-    const { name, email, password } = req.body;
-
-    const user = await User.create({
-      name,
-      email,
-      password,
-    });
-
-    const token = user.getJWTToken();
-
-    sendToken(user,201,res);
-
+  sendToken(user, 201, res);
 });
 
 // Login User
 exports.loginUser = catchAsyncErrors(async (req, res, next) => {
-    const { email, password } = req.body;
-  
-    // checking if user has given password and email both
-  
-    if (!email || !password) {
-      return next(new ErrorHander("Please Enter Email & Password", 400));
-    }
-  
-    const user = await User.findOne({ email }).select("+password");
-  
-    if (!user) {
-      return next(new ErrorHander("Invalid email or password", 401));
-    }
+  const { email, password } = req.body;
 
-    if(!user.isApprove){
-      return next(new ErrorHander("User is not Approved by Admin", 401));
-    }
-  
-    const isPasswordMatched = await user.comparePassword(password);
-  
-    if (!isPasswordMatched) {
-      return next(new ErrorHander("Invalid email or password", 401));
-    }
+  // checking if user has given password and email both
 
-    sendToken(user,200,res);
+  if (!email || !password) {
+    return next(new ErrorHander("Please Enter Email & Password", 400));
+  }
+
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user) {
+    return next(new ErrorHander("Invalid email or password", 401));
+  }
+
+  if (!user.isApprove) {
+    return next(new ErrorHander("User is not Approved by Admin", 401));
+  }
+
+  const isPasswordMatched = await user.comparePassword(password);
+
+  if (!isPasswordMatched) {
+    return next(new ErrorHander("Invalid email or password", 401));
+  }
+
+  sendToken(user, 200, res);
 });
 
 // Logout User
 exports.logout = catchAsyncErrors(async (req, res, next) => {
-    res.cookie("token", null, {
-      expires: new Date(Date.now()),
-      httpOnly: true,
-    });
-  
-    res.status(200).json({
-      success: true,
-      message: "Logged Out",
-    });
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Logged Out",
+  });
 });
 
 // Forgot Password
@@ -80,7 +75,7 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  const resetPasswordUrl = `${req.protocol}://${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
 
   const message = `Your password reset token is(temp) :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
@@ -176,39 +171,38 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
   const newUserData = {
     name: req.body.name,
     email: req.body.email,
-};
-
-if (req.body.avatar !== "") {
-  const user = await User.findById(req.user.id);
-
-  const imageId = user.avatar.public_id;
-
-  await cloudinary.v2.uploader.destroy(imageId);
-
-  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
-  });
-
-  newUserData.avatar = {
-    public_id: myCloud.public_id,
-    url: myCloud.secure_url,
   };
-}
 
-const imageId = user.avatar.public_id
+  // if (req.body.avatar !== "") {
+  //   const user = await User.findById(req.user.id);
 
-const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
-  new: true,
-  runValidators: true,
-  useFindAndModify: false,
-});
+  //   const imageId = user.avatar.public_id;
+
+  //   await cloudinary.v2.uploader.destroy(imageId);
+
+  //   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+  //     folder: "avatars",
+  //     width: 150,
+  //     crop: "scale",
+  //   });
+
+  //   newUserData.avatar = {
+  //     public_id: myCloud.public_id,
+  //     url: myCloud.secure_url,
+  //   };
+  // }
+
+  // const imageId = user.avatar.public_id
+
+  const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
 
   res.status(200).json({
     success: true,
   });
-
 });
 
 // Get all users(admin)
@@ -274,5 +268,3 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     message: "User Deleted Successfully",
   });
 });
-
-
