@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./Navbar.css";
+import { useSelector} from "react-redux";
 // import logo from "../../../images/logo.png";
 function Navbar() {
+
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   const navToggle = () => {
@@ -14,6 +17,7 @@ function Navbar() {
       setIcon("nav__toggler toggle");
     } else setIcon("nav__toggler");
   };
+  
   return (
     <nav className="nav">
       <a href="/" className="nav__brand">

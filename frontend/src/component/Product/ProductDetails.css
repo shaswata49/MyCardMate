@@ -120,6 +120,7 @@
   font: 500 1vmax sans-serif; /* Smaller size */
   margin-top: 2vmax;
   text-align: center; /* Center the price */
+  font-weight: bold;
 }
 
 .detailsBlock-4 > p {

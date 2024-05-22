@@ -147,9 +147,15 @@ const ProductDetails = ({ match, history }) => {
 
               <div className="detailsBlock-4-1">PROFIT : {product.profit}</div>
 
-              <div className="detailsBlock-4">
-                ADDRESS : {product.description}
-              </div>
+              {isAuthenticated & user.isApprove? (
+                <div className="detailsBlock-4">
+                  ADDRESS : {product.description}
+                </div>
+              ) : (
+                <div className="detailsBlock-4">
+                  Please login to see address
+                </div>
+              )}
 
               <div className="detailsBlock-4" style={{ marginTop: "1rem" }}>
                 PRODUCT LINK :{" "}
