@@ -9,7 +9,7 @@ import MetaData from "../layout/MetaData";
 const Contact = ({}) => {
   const { loading } = useSelector((state) => state.products);
   const contactConfig = {
-    YOUR_EMAIL: "developer@javascript.com",
+    YOUR_EMAIL: "mycardmate@gmail.com",
     YOUR_FONE: "+918127657200",
     description:
       "Unlock new opportunities on-the-go! Book mobile devices hassle-free and earn rewards with every transaction. Your credit card is in safe hands – trust us for secure and reliable mobile bookings.",
